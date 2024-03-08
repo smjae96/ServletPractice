@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>GET 방식 테스트</title>
+    <style>
+        fieldset {
+            padding: 10px;
+            width: 40%;
+
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox  */
+        input[type='number'] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Get 방식으로 요청 후 응답페이지 보기</h1>
+    <p>
+        특징1. GET방식으로 요청 시 URL의 Header영역에 데이터들을 포함시켜 요청<br>
+        => 사용자가 입력한 값(데이터)들이 url에 노출됨<br>
+        => 보안 상 안전하지 않음<br>
+        => 따라서, 로그인이나 회원가입 같은 경우 GET방식이 부적합함.
+        <br><br>
+        특징2. Header 영역에 전송하는 길이의 제한이 있음<br>
+        => 방대한 데이터를 전송하는 경우 초과된 데이터는 제외되고 전송이 됨.<br>
+        => 게시판 작성 같은 경우 GET방식이 부적합함.
+        <br><br>
+        특징3. 장점으로는 url에 데이터가 노출되기 때문에, 즐겨찾기(북마크) 기능 가능.<br>
+        => url을 저장해두었다가 재사용(요청)<br>
+        => 검색 기능에 GET방식이 적합함.
+    </p>
+    <hr>
+    <h2>간단한 정보 입력</h2>
+    <p>아래 정보를 입력한 후 제출 버튼을 눌러주세요.</p>
+    <!-- form: 사용자의 입력을 받아 
+                    서버로 요청할 때 주로 사용 
+         * action: 요청 주소 (목적지)
+         * method: 요청 방식 (GET/POST/PUT/DELETE)
+         
+         => form 태그 내에 [제출]버튼(submit 타입) 클릭 시
+         	form 태그의 속성 중 action에 작성한 url로 데이터를 가지고 요청
+    -->
+    <form action="" method="GET">
+        <fieldset>
+            <div>
+                <label for="name">이름: </label>
+                <input type="text" id="name" name="name">
+                <!-- input에 id 속성은 label for랑 엮은거고, 
+                    name 속성은 데이터 전송 시 key값으로 사용하기 위해 사용.-->
+            </div><br>
+            <div>
+                성별:
+                <!-- 남자/여자 둘 중 하나만 선택할 수 있는 것은 name 속성의 값이 "gender"로 같기 때문(radio type의 특징)-->
+                <input type="radio" id="gender1" name="gender" value="남자">
+                <label for="gender1">남자</label>
+                <input type="radio" id="gender2" name="gender" value="여자">
+                <label for="gender2">여자</label>
+            </div><br>
+            <div>
+                <label for="age">나이: </label>
+                <input type="number" id="age" name="age">
+            </div><br>
+            <div>
+                <label for="address">거주지: </label>
+                <select id="address" name="address">
+                    <option value="서울">서울</option>
+                    <option value="경기">경기</option>
+                    <option value="인천">인천</option>
+                    <option value="강원">강원</option>
+                    <option value="제주">제주</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="height">키: </label>
+                <input type="range" id="height" name="height" min="100" max="200" value="160" step="10">
+            </div><br>
+            <div>
+                좋아하는 음식(모두 고르시오): 
+                <input type="checkbox" name="food" value="한식"/>한식
+                <input type="checkbox" name="food" value="중식"/>중식
+                <input type="checkbox" name="food" value="일식"/>일식
+                <input type="checkbox" name="food" value="양식"/>양식
+                <input type="checkbox" name="food" value="분식"/>분식
+            </div><br>
+            <input type="submit" value="제출" />
+            <input type="button" value="초기화" />
+        </fieldset>
+    </form>
+</body>
+
+</html>

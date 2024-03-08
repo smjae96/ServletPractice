@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%-- 여러 개를 import 할 때는 컴마로 (,) 구분 --%>
+<%@ page import="java.util.ArrayList, java.util.Date" %>	
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02 Directive page</title>
+</head>
+<body>
+	<h1>page 지시어</h1>
+	
+	<%
+		ArrayList<String> list = new ArrayList<>();
+		// 0번 위치에 "Servlet" 값을 추가
+		list.add("Servlet");
+		// 1번 위치에 "JSP" 추가
+		list.add("JSP");
+		
+		Date today = new Date();
+	%>
+
+	<p>
+		리스트의 길이 : <%= list.size() %>
+	</p>	
+</body>
+</html>

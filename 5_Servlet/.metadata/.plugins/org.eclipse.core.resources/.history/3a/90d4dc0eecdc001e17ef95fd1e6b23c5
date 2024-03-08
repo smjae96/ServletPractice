@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, java.util.Date, java.text.SimpleDateFormat" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pizza Order</title>
+</head>
+<body>
+<h1>피자 주문하기</h1>
+<h2>현재 날짜</h2>
+<h3><% Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일");
+		String today = sdf.format(d);
+		out.println(today);
+	%></h3>
+<div>주문자 정보</div>
+<form>
+	<fieldset>
+		<label>이름</label>
+		<input type="text">
+		<br>
+		<label>연락처</label>
+		<input type="text">
+		<br>
+		<label>주소</label>
+		<input type="text">
+		<br>
+		<label>요청사항</label>
+		<input type="text" placeholder="내용을 입력하세요" cols="10">
+	</fieldset>
+</form>
+</body>
+</html>

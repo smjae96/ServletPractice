@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01 Scripting Element</title>
+</head>
+<body>
+	<h1>스크립팅 원소</h1>
+	<!-- HTML 주석 : 개발자도구 창에서 소스(Elements)에 표시됨. -->
+	<%-- JSP 주석 : 개발자도구 창에서 소스에 표시되지 않음 --%>
+</body>
+</html>

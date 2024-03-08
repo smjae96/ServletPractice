@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Order Result</title>
+</head>
+<body>
+    <h1>피자 주문 내역</h1>
+    <br>
+    <div>주문자 정보</div>
+    <br><br>
+    <div><%= request.getAttribute("address") %></div>
+    <div><%= request.getAttribute("phone") %></div>
+    <br><br>
+    <div>요청 사항</div>
+    <div><%= request.getAttribute("requestion") %></div>
+    <hr>
+    <div>주문 정보</div>
+    <br><br>
+    <div><%= request.getAttribute("menu") %></div>
+    <ul>-토핑 추가 항목
+    	<li><% for(String toppings : request.getAttribute("topping")) {
+    			out.println(toppings);
+    		%></li>
+    	}
+    	
+    </ul>
+    	
+    
+    
+    
+
+
+</body>
+</html>

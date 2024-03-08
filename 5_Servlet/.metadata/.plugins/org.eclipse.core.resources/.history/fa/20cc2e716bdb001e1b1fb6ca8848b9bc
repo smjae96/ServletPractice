@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>POST 요청에 대한 응답페이지(jsp)</title>
+</head>
+<body>
+	<h2>간단한 정보 응답 페이지 - POST</h2>
+	
+	<span id="name">xxx</span>님의 정보 <br>
+	성별은 
+		<span id= "gender">xx</span>입니다. <br> <!-- 성별 선택 시 -->
+		
+		선택하지 않았습니다.
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  
+  <!-- 
+	* web.xml 파일
+		- 해당 웹 어플리케이션을 구동시키는 서버 시작 시 제일 먼저 읽어지게 되는 파일.
+		- 배포 서술자(DD, Deployment Descriptor)라고 하여 해당 웹 어플리케이션의
+		  기본적인 설정들을 작성
+	    - 개발자가 web.xml을 수정하지 않고도 개발 및 운영 가능
+	      => 규모가 커지고 다양한 Filter, Servlet, Wrapper 등을 사용하고자 한다면 수정이 필요할 수 있다.  
+   -->
+  
+  <display-name>1_Servlet</display-name>
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>

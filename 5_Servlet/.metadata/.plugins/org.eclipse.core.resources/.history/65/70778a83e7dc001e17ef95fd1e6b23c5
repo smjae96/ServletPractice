@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JSP Page</title>
+</head>
+<body>
+	<h1>JSP (Java Server Page)</h1>
+	<p>
+		HTML 내에 자바코드를 작성할 수 있는 "자바 언어"로 <br>
+		서블릿에서 응답화면을 구현하는 것보다 간단하게 작성할 수 있음.<br>
+		따라서, JSP의 큰 장점은 응답화면을 구현하는데 집중할 수 있음<br>
+		서블릿에서는 비즈니스 로직(요청에 대한 처리)에만 집중할 수 있음 
+	</p>
+	<hr>
+
+	<h2>JSP Element 표현법</h2>
+	<h3>1) JSP 스크립팅 원소 (Scripting Element)</h3>
+	<p>JSP 페이지에서 자바 코드를 작성할 수 있게 해주는 기능</p>
+
+	<ul>
+		<li>
+			스크립틀릿 : &lt;% 자바코드 %&gt; <br>
+			자바코드를 사용하기 위한 가장 기본적인 표현법
+		</li>
+		<li>
+			표현식(출력식) : &lt;%= 자바코드 %&gt; <br>
+			자바에서 어떤 값을 출력할 때 사용
+		</li>
+		<li>
+			선언문 : &lt;%! 자바코드 %&gt; <br>
+			멤버변수나 메소드를 선언하기 위해 사용
+		</li>
+	</ul>
+
+	<a href="views/01_ScriptingElement.jsp">자세히 보기 &raquo;</a>
+	<hr>
+
+	<h3>
+		2) 지시어 (Directive) <br>
+		&lt;%@ page | include | taglib 속성="속성값" 
+		속성="속성값"%&gt;
+	</h3>
+	<p>JSP 페이지 전체에 영향을 미치는 정보
+		들을 작성할 때 사용</p>
+	<ol>
+		<li>
+			page 지시어 : 현재 jsp 페이지를 처리하는 데 필요한 각종 속성들을 기술하는 부분 <br>
+			<ul>
+				<li>language : 사용할 언어의 유형</li>
+				<li>contentType : 해당 페이지 형식, 문자셋 저장</li>
+				<li>pageEncoding : jsp페이지 내에 기록된 자바코드의 인코딩 방식</li>
+				<li>import: 자바의 import와 같은 의미</li>
+				<li>errorPage : jsp 상에 오류 발생 시 보여줄 에러페이지 경로 지정</li>
+			</ul>
+			<a href="views/02_directivePage.jsp">자세히보기 &raquo;</a>
+		</li>
+		
+		<li>
+			include 지시어 : 현재 jsp 상에 또 다른 jsp를 포함하고자 할 때 사용하는 지시어 <br>
+			
+		</li>
+	</ol>
+</body>
+</html>

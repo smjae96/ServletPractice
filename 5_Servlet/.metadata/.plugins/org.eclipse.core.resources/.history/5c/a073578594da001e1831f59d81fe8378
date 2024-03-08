@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>서블릿 시작하기</title>
+</head>
+<body>
+	<h1>안녕? 서블릿!</h1>
+	
+	<h2>* Servlet</h2>
+	
+	<p>
+		서블릿: 웹 서비스를 위한 "자바 클래스"를 말하고, 자바를 사용해서 웹을 만들기 위한 기술
+	</p>
+</body>
+</html>

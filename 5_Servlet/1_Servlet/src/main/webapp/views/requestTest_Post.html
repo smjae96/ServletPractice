@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>POST 방식 테스트</title>
+</head>
+<body>
+    <h1>POST 방식으로 요청 후 응답 페이지 보기</h1>
+
+    <>
+        특징1. URL의 body 영역에 데이터를 포함시켜 요청 <br>
+             => 사용자가 입력한 값들이 url에 노출되지 않음
+             => 보안 상 안전함 <br>
+             => 그러므로, 로그인이나 회원가입 같은 경우 POST방식이 적합
+        <br><br>
+        특징2. body영역에는 전송 길이의 제한이 없음<br>
+             => 게시글 작성 시 POST 방식이 적합
+        <br><br>
+        특징3. 즐겨찾기(북마크)는 가능하나, 데이터가 url에 노출되지 않아 기존 화면과 다를 수 있음<br>
+             => 검색 기능 같은 경우 POST 방식이 부적합
+        <br><br>
+        특징4. 타임아웃(timeout)이 존재하기 때문에 페이지 요청에 기다리는 시간 있음
+    </p>
+    <hr>
+    <h2>간단한 정보 입력</h2>
+    <p>아래 정보를 입력한 후 제출 버튼을 눌러주세요.</p>
+    <form action="/1_Servlet/test2.do" method="POST">
+        <fieldset>
+            <div>
+                <label for="name">이름: </label>
+                <input type="text" id="name" name="name">
+                <!-- input 태그의 id 속성은 label 태그의 for 속성이랑 엮은거고, 
+                    name 속성은 데이터 전송 시 key값으로 사용하기 위해 사용.-->
+            </div><br>
+            <div>
+                성별:
+                <!-- 남자/여자 둘 중 하나만 선택할 수 있는 것은 name 속성의 값이 "gender"로 같기 때문(radio type의 특징)-->
+                <input type="radio" id="gender1" name="gender" value="남자">
+                <label for="gender1">남자</label>
+                <input type="radio" id="gender2" name="gender" value="여자">
+                <label for="gender2">여자</label>
+            </div><br>
+            <div>
+                <label for="age">나이: </label>
+                <input type="number" id="age" name="age">
+            </div><br>
+            <div>
+                <label for="address">거주지: </label>
+                <select id="address" name="address">
+                    <option value="서울">서울</option>
+                    <option value="경기">경기</option>
+                    <option value="인천">인천</option>
+                    <option value="강원">강원</option>
+                    <option value="제주">제주</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="height">키: </label>
+                <input type="range" id="height" name="height" min="100" max="200" value="160" step="10">
+            </div><br>
+            <div>
+                좋아하는 음식(모두 고르시오): 
+                <input type="checkbox" name="food" value="한식"/>한식
+                <input type="checkbox" name="food" value="중식"/>중식
+                <input type="checkbox" name="food" value="일식"/>일식
+                <input type="checkbox" name="food" value="양식"/>양식
+                <input type="checkbox" name="food" value="분식"/>분식
+            </div><br>
+            <input type="submit" value="제출" />
+            <input type="button" value="초기화" />
+        </fieldset>
+    </form>
+</body>
+</html>

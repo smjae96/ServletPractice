@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>01 Scripting Element</title>
+</head>
+<body>
+	<h1>스크립팅 원소</h1>
+	<!-- HTML 주석 : 개발자도구 창에서 소스(Elements)에 표시됨. -->
+	<%-- JSP 주석 : 개발자도구 창에서 소스에 표시되지 않음 --%>
+	
+	<%
+		// 스크립틀릿 : 이 영역에서는 일반적인 자바 코드 작성 (변수 선언/초기화/제어문 등)
+		// 1부터 100까지 더해서 콘솔창에 "계산 결과=xx" 출력
+		int i= 0;
+		for(int j=1; j<=100; j++) {
+			i += j;
+		}
+		System.out.println("계산 결과= " +i);
+	%>
+	<p>
+		브라우저 화면에 출력하고자 한다면 <br>
+		스크립틀릿을 사용하여 출력 가능 : <% out.println(i); %>
+		표현식(출력식)을 사용하여 출력 가능
+	</p>
+</body>
+</html>

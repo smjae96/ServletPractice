@@ -1,0 +1,136 @@
+package controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class RequestGetServlet
+ */
+@WebServlet("/test.do")
+public class RequestGetServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RequestGetServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// +인코딩 설정!
+//		request.setCharacterEncoding("UTF-8");
+		// 자바(servlet) 코드 변경 시 톰캣 서버 재시작 필요!
+		// + Servers 탭에서 서버 상태가 [xxx, Restart] 와 같이 표시될 때는 재시작 필요.
+		
+		// Get 방식으로 요청 시 doGet 메소드가 자동으로 호출됨
+		System.out.println("Get 요청이 들어옴!");
+		
+		/*
+		 * 첫번째 매개변수인 request는 요청 시 전달되는 내용들이 담겨져 있다. (사용자가 입력한 값들, 요청 전송방식, 요청한 곳의 IP 등등)
+		 * 두번째 매개변수인 response는 요청에 대한 처리 후 응답할 때 사용되는 객체.
+		 
+		
+		// Get 요청 시 전달된 값들을 확인
+		//  전달된 모든 Key(파라미터)를 확인 : getParameterNames()
+		*/
+		/*
+		Enumeration<String> params = request.getParameterNames();
+		while(params.hasMoreElements()) {
+			String param = params.nextElement();
+			System.out.println(param);
+		}
+		*/
+		
+		// * 전달된 Key(파라미터) 하나씩 확인하고자 할때 => getParameter(Key명) : 해당value값(String)
+		/*
+		System.out.println(request.getParameter("name"));
+		System.out.println(request.getParameter("age"));
+		System.out.println(request.getParameter("address"));
+		System.out.println(request.getParameter("height"));
+		
+		System.out.println(request.getParameter("kkk"));	// 해당 key에 맞는 데이터가 없을 경우 "null"값을 리턴
+		*/
+		
+		/*
+		 * - 요청 시 전달된 데이터를 처리(확인) 메소드
+		 * 	 1) request.getParameter("키값") : String(해당 밸류값)
+		 * 	 2) request.getParameterValues("키값") : String[] (해당 밸류값들이 배열에 담겨져서 전달)
+		 */
+		
+		String name = request.getParameter("name");	// type= "text" : "홍길동" | "" <- 입력한 값이 없을 경우
+		String gender = request.getParameter("gender");	// type= "radio" : "남자" or "여자" | null <-  선택을 하지 않은 경우
+		int age = Integer.parseInt(request.getParameter("age")); // type= "number" : "20" -> 20 | "" => NumberFormatException 발생
+		String address = request.getParameter("address");	// select : "서울" | "경기도" | "강원도" ....
+		double height = Double.parseDouble(request.getParameter("height")); // type= "range" : "160" -> 160.0
+		
+		// 체크박스로 선택된 값들을 처리(확인)
+		String[] foods = request.getParameterValues("food"); // type= "checkbox"
+		
+		System.out.println("이름 : " +name);
+		System.out.println("성별 : " +gender);
+		System.out.println("나이 : "+age);
+		System.out.println("주소 : "+address);
+		System.out.printf("키 : %.1f \n",height);
+		
+		if(foods == null) {
+			System.out.println("좋아하는 음식 없음");
+		} else {
+			// 문자열과 함께 출력하려고 했으나 제대로 출력되지 않음
+			// System.out.println("좋아하는 음식 : " + foods);
+			
+			// String.join을 사용하여 배열 내의 값들을 특정 구분자를 기준으로 출력
+			//	- 두번째 전달값이(배열) null일 경우 NullPointerException이 발생하므로 위의 if문으로 미리 예외처리해줌!
+			System.out.println("좋아하는 음식 : " + String.join("/", foods));
+		}
+		//--------------------------------------------------------------
+				// 응답을 보내보자.
+				// +setContentType: 응답데이터타입;인코딩
+				//		- 인코딩: charset=utf-8
+				/*
+				response.setContentType("text/html;charset=utf-8");
+				PrintWriter pw = response.getWriter();
+				
+				pw.println("제출 완료");
+				pw.close();
+				*/
+		
+		
+		// 요청이 들어오면 전달된 데이터들을 가지고 처리를 진행 (db, ... )
+		// => service 메소드 호출 > Dao 메소드 호출 > DB에 sql 실행
+		
+		// 요청에 대한 처리가 완료되었다고 가정하고 응답페이지를 작성하여 전송
+		// * "Java" 코드 내에 사용자가 보게 될 응답 페이지(HTML)를 작성
+		// * 장점: 반복문이나 조건문, 활용할 수 있는 메소드를 사용
+		// * 단점: 불편하고 복잡한 작업. HTML 내용을 수정하게 되면 자바코드를 변경한 것이므로 서버 재시작(restart)가 필요.
+		
+		// * response 객체를 통해서 사용자에게 응답페이지(html)을 전달
+		
+		// 1) 출력할 내용의 문서 형태와 문자셋(인코딩)을 설정
+		//		response.setContentType("문서형태;charset=문자셋(인코딩)");
+		
+		
+		
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

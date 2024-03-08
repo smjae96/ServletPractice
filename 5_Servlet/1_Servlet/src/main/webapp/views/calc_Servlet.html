@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기 서블릿</title>
+</head>
+
+<body>
+    <form action="/1_Servlet/calc_Servlet" method="GET">
+        <h1>계산기 서블릿</h1>
+        <hr>
+        <input type="number" placeholder="내용을 입력해주세요" name="first_value" id="first_value" step="0.000000000000001">
+        <!-- 소수점 입력을 위해 step 속성 사용 ex)0.01 : 소수점 둘째자리까지 -->
+        <select id="address" name="calc">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" placeholder="내용을 입력해주세요" name="second_value" id="first_value" step="0.000000000000001">
+        <input type="submit" value="실행">
+    </form>
+</body>
+
+</html>

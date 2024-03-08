@@ -1,0 +1,67 @@
+package controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class PizzaServlet
+ */
+@WebServlet("/orderPizza.do")
+public class PizzaServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public PizzaServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		System.out.println("요청 확인!!!");
+		// 1) 전달된 값들 중에 한글이 있을 경우 인코딩 처리 (POST 방식에만 해당)
+//		request.setCharacterEncoding("UTF-8");
+		
+		// 2) 요청 시 전달된 값 추출 후 가공처리(파싱) => 변수 또는 객체 기록
+		/*
+		 * 	- request.getParameter("키값") : String 타입의 데이터(값) "xx"
+		 * 	- request.getParameterValues("키값") : String[] 타입의 데이터 모음 ["xx", "yy", "zz", ...]
+		 */
+		
+		// @@ 피자 주문 시 전달되는 모든 값에 대해 변수로 추출 @@
+		String name = request.getParameter("name");
+		String phone =request.getParameter("phone");
+		String address =request.getParameter("address");
+		String requestion =request.getParameter("requestion");
+		String menu =request.getParameter("menu");
+		String[] topping = request.getParameterValues("topping");
+		String[] side = request.getParameterValues("side");
+		
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		out.println(name);
+		out.println(phone);
+		out.println(address);
+		out.println(requestion);
+		out.println(menu);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
