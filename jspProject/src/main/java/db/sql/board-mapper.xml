@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectListCount">
+		select count(*) count
+		from board
+		where board_type = 1
+		and status = 'Y'
+	</entry>
+	<entry key="selectList">
+		select *
+		from (select rownum rnum, r.*
+		from
+		(select
+		board_no, board_title, user_id, count, category_name,
+		to_char(create_date, 'YYYY/MM/DD') create_date
+		from board
+		join member
+		on(board_writer = user_no)
+		join category using (category_no)
+		where
+		board.status = 'Y' and board_type = 1
+		order by create_date desc
+		) r
+		)
+		where rnum between ? and ?
+	</entry>
+	<entry key="selectCategoryList">
+		select category_no, category_name
+		from category
+	</entry>
+	<entry key="insertBoard">
+		insert into board(board_no, board_type, category_no,
+		board_title, board_content, board_writer)
+		values (SEQ_BNO.NEXTVAL, 1,
+		?, ?, ?, ?)
+	</entry>
+	<entry key="insertAttachment">
+		insert into attachment(file_no, ref_bno, origin_name,
+		change_name, file_path)
+		values (SEQ_FNO.NEXTVAL, SEQ_BNO.CURRVAL, ?, ?,
+		?)
+	</entry>
+	<entry key="updateBoardCount">
+		update board set count = count+1
+		where board_no = ? and
+		status = 'Y'
+	</entry>
+	
+	<entry key="selectBoardDetail">
+		select board_no, category_name, board_title,
+		board_content, user_id,
+		to_char(create_date, 'YYYY/MM/DD') create_date
+		from board
+		join category using(category_no)
+		join member on(board_writer = user_no)
+		where board_no = ?
+	</entry>
+	
+	<entry key="selectAttachment">
+		select file_no, origin_name, change_name, file_path
+		from attachment
+		where ref_bno = ?
+	</entry>
+</properties>

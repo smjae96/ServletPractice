@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="selectNoticeList">
+		select notice_no, notice_title, user_id, count,
+		create_date
+		from notice
+		join member on(notice_writer = user_no)
+		where
+		notice.status = 'Y'
+		order by notice_no desc
+	</entry>
+	<entry key="increaseCount">
+		update notice
+		set count = count+1
+		where notice_no = ?
+	</entry>
+	<entry key="selectNotice">
+		select notice_no, notice_title, notice_content,
+		user_id, count, create_date
+		from notice join member on(notice_writer =
+		user_no)
+		where notice_no = ? and notice.status = 'Y'
+	</entry>
+	<entry key="insertNotice">
+		insert into notice(notice_no, notice_title,
+		notice_content, notice_writer)
+		values (SEQ_NNO.NEXTVAL,?,?,?)
+	</entry>
+	<entry key="updateNotice">
+		update notice
+		set notice_title = ?,
+		notice_content = ?
+		where notice_no = ?
+	</entry>
+	<entry key="deleteNotice">
+		update notice
+		set status = 'N'
+		where notice_no = ?
+	</entry>
+</properties>
